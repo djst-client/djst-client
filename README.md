@@ -1,4 +1,4 @@
-# discord.js-touch
+# djst-client
 [`discord.js`] framework that make you easily run and development a discord bot.
 
 ## docs

@@ -1,6 +1,6 @@
 {
   "name": "djst-client",
-  "version": "1.0.0",
+  "version": "1.0.01",
   "description": "discord.js framework that make you more easily to make a Discord Bot",
   "scripts": {
     "test": "nodemon test/main.js"
