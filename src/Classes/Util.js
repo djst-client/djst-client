@@ -53,7 +53,8 @@ ${modules.map(mod => `**${mod.name}**\n\`\`\`nim\n${mod.cmds.map(cmd => ` - ${cm
 			if (checkCooldown) {
 				let leftTime = Date.now() - checkCooldown;
 				let cd = ms(command.cooldown * 1000 - leftTime);
-				return message.channel.send("You have cooldown in this command." + ` **${cd}**`);
+				let cdMsg = client.opt.messages.cooldown.replace(/{command}/g, command.name).replace(/{cdTime}/g, cd);
+				return message.channel.send(cdMsg);
 			} else {
 				cooldown.set(`${command.name}-${message.author.id}`, Date.now());
 				setTimeout(() => {
