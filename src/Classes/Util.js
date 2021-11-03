@@ -1,4 +1,5 @@
 const commands = require("../Data/commands.js");
+const aliases = require("../Data/aliases.js");
 const categories = require("../Data/categories.js");
 const cooldown = require("../Data/cooldown.js");
 const Command = require("./Command.js");
@@ -45,7 +46,7 @@ ${modules.map(mod => `**${mod.name}**\n\`\`\`nim\n${mod.cmds.map(cmd => ` - ${cm
 			let args = message.content.slice(prefix.length).trim().split(/ +/g);
 			let cmd = args.shift().toLowerCase();
 
-			let command = commands.get(cmd);
+			let command = commands.get(cmd) || commands.get(aliases.get(cmd))
 			if (!command) return;
 
 			let checkCooldown = cooldown.get(`${command.name}-${message.author.id}`);

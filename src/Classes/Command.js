@@ -2,6 +2,7 @@ const {
 	isString
 } = require('../util.js');
 const commands = require("../Data/commands.js");
+const aliases = require("../Data/aliases.js");
 const categories = require("../Data/categories.js");
 
 class Command {
@@ -39,6 +40,11 @@ class Command {
 		}
 
 		commands.set(`${this.opt.name}`, this.opt);
+		if (this.opt.aliases && this.opt.aliases.length > 0) {
+			this.opt.aliases.forEach(a => {
+				aliases.set(`${a}`, this.opt.name);
+			})
+		}
 		if (client) { client.emit("commandAdded", this.opt) }
 	}
 }
