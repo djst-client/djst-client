@@ -39,7 +39,6 @@ class Command {
 		}
 
 		commands.set(`${this.opt.name}`, this.opt);
-		console.log(this.opt.name)
 		if (client) { client.emit("commandAdded", this.opt) }
 	}
 }

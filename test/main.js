@@ -16,4 +16,4 @@ client.on("ready", () => {
 
 	console.log("ready");
 })
-client.login("NzcxMDA3NzA1MTAzNTk3NjEw.X5l24Q.9yBcXyBMusSAyM-1hbtUYJHbMN8")
+client.login("token")
