@@ -9,8 +9,11 @@ class DJSTouch extends djsclient {
 
 		this.opt = {
 			...options,
-			initCommands: true,
-			ignoreBot: true
+			initCommands: options.initCommands ? options.initCommands : true,
+			ignoreBot: options.ignoreBot ? options.ignoreBot : true,
+			messages: {
+				cooldown: options.messages.cooldown ? options.messages.cooldown : "You have cooldown in **{command}** (**${cdTime}**)"
+			}
 		};
 
 		if (this.opt.initCommands) {
