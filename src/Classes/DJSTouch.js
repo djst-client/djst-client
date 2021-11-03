@@ -14,7 +14,7 @@ class DJSTouch extends djsclient {
 		};
 
 		if (this.opt.initCommands) {
-			this.initCommands();
+			initCommands(this)
 		}
 
 	}
@@ -25,10 +25,6 @@ class DJSTouch extends djsclient {
 
 	getCommands() {
 		return require("../Data/commands.js");
-	}
-
-	initCommands() {
-		return initCommands(this)
 	}
 
 	generateHelpCommand() {
