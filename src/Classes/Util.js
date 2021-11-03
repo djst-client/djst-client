@@ -1,6 +1,8 @@
 const commands = require("../Data/commands.js");
 const categories = require("../Data/categories.js");
+const cooldown = require("../Data/cooldown.js");
 const Command = require("./Command.js");
+const ms = require("ms");
 
 class Util {
 	constructor() {
@@ -45,6 +47,19 @@ ${modules.map(mod => `**${mod.name}**\n\`\`\`nim\n${mod.cmds.map(cmd => ` - ${cm
 
 			let command = commands.get(cmd);
 			if (!command) return;
+
+			let checkCooldown = cooldown.get(`${command.name}-${message.author.id}`);
+
+			if (checkCooldown) {
+				let leftTime = Date.now() - checkCooldown;
+				let cd = ms(command.cooldown * 1000 - leftTime);
+				return message.channel.send("You have cooldown in this command." + ` **${cd}**`);
+			} else {
+				cooldown.set(`${command.name}-${message.author.id}`, Date.now());
+				setTimeout(() => {
+					cooldown.delete(`${command.name}-${message.author.id}`);
+				}, command.cooldown * 1000)
+			}
 
 			command.execute(message, args, client);
 		});
