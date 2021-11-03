@@ -30,6 +30,10 @@ class DJSTouch extends djsclient {
 		return require("../Data/commands.js");
 	}
 
+	getModules() {
+		return require("../Data/categories.js");
+	}
+
 	generateHelpCommand() {
 		return generateHelpCommand();
 	}
