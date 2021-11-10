@@ -2,6 +2,7 @@ const { Client: djsclient } = require("discord.js");
 const Command = require("./Command.js");
 const Util = require("./Util.js");
 const { initCommands, generateHelpCommand } = new Util();
+const DefaultMessages = require("../Data/DefaultMessages.js");
 
 class DJSTouch extends djsclient {
 	constructor(options = {}) {
@@ -12,7 +13,7 @@ class DJSTouch extends djsclient {
 			initCommands: options.initCommands ? options.initCommands : true,
 			ignoreBot: options.ignoreBot ? options.ignoreBot : true,
 			messages: {
-				cooldown: options.messages.cooldown ? options.messages.cooldown : "You have cooldown in **{command}** (**${cdTime}**)"
+				cooldown: options.messages ? `${options.messages.cooldown ? options.messages.cooldown : DefaultMessages.cooldown}` : DefaultMessages.cooldown
 			}
 		};
 
