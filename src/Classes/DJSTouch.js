@@ -10,7 +10,7 @@ class DJSTouch extends djsclient {
 
 		this.opt = {
 			...options,
-			initCommands: options.initCommands ? options.initCommands : true,
+			initCommands: options.initCommands ? options.initCommands : false,
 			ignoreBot: options.ignoreBot ? options.ignoreBot : true,
 			messages: {
 				cooldown: options.messages ? `${options.messages.cooldown ? options.messages.cooldown : DefaultMessages.cooldown}` : DefaultMessages.cooldown
