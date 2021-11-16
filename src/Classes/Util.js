@@ -32,6 +32,15 @@ ${modules.map(mod => `**${mod.name}**\n\`\`\`nim\n${mod.cmds.map(cmd => ` - ${cm
 		})
 	}
 
+	async initButtons(client) {
+		client.on("interactionCreate", (interaction) => {
+			let isButton = interaction.isButton();
+
+			if (!isButton) return;
+			client.emit("buttonClicked", interaction);
+		})
+	}
+
 	async initCommands(client) {
 		let prefix = client.opt.prefix;
 		if (!prefix) throw TypeError("Cannot initialize commands because no Prefix provided.");

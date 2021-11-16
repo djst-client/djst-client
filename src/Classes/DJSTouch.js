@@ -1,7 +1,7 @@
 const { Client: djsclient } = require("discord.js");
 const Command = require("./Command.js");
 const Util = require("./Util.js");
-const { initCommands, generateHelpCommand } = new Util();
+const { initCommands, generateHelpCommand, initButtons } = new Util();
 const DefaultMessages = require("../Data/DefaultMessages.js");
 
 class DJSTouch extends djsclient {
@@ -19,6 +19,7 @@ class DJSTouch extends djsclient {
 
 		if (this.opt.initCommands) {
 			initCommands(this)
+			initButtons(this)
 		}
 
 	}
