@@ -1,3 +1,3 @@
 module.exports = {
-	cooldown: "You have cooldown in **{command}** (**${cdTime}**)",
+	cooldown: "You have cooldown in **{command}** (**{cdTime}**)",
 }
