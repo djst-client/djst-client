@@ -20,7 +20,7 @@ class Util {
 			execute: async (message, args, client) => {
 				let modules = categories;
 
-				message.channel.send(`
+				message.reply(`
 **commands [${commands.size}]** list for **${client.user.tag}**
 **prefix** is \`${client.opt.prefix}\`
 
@@ -64,7 +64,7 @@ ${modules.map(mod => `**${mod.name}**\n\`\`\`nim\n${mod.cmds.map(cmd => ` - ${cm
 				let leftTime = Date.now() - checkCooldown;
 				let cd = ms(command.cooldown * 1000 - leftTime);
 				let cdMsg = client.opt.messages.cooldown.replace(/{command}/g, command.name).replace(/{cdTime}/g, cd);
-				return message.channel.send(cdMsg);
+				return message.reply(cdMsg);
 			} else {
 				cooldown.set(`${command.name}-${message.author.id}`, Date.now());
 				setTimeout(() => {
